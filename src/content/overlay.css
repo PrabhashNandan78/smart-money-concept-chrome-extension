@@ -1,0 +1,145 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   SMC Chrome Extension – Floating Overlay Styles
+   ──────────────────────────────────────────────────────────────────────────── */
+
+#smc-overlay {
+  position: fixed;
+  top: 60px;
+  right: 16px;
+  z-index: 9999;
+  width: 210px;
+  background: #0f1117;
+  border: 1px solid #1e2435;
+  border-radius: 6px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(0, 255, 136, 0.08);
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 11px;
+  color: #c9d1d9;
+  user-select: none;
+  overflow: hidden;
+  transition: box-shadow 0.15s ease;
+}
+
+#smc-overlay:hover {
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(0, 255, 136, 0.18);
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+
+.smc-overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: #161b27;
+  border-bottom: 1px solid #1e2435;
+  cursor: grab;
+}
+
+.smc-overlay-header:active {
+  cursor: grabbing;
+}
+
+.smc-overlay-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #00ff88;
+  text-transform: uppercase;
+}
+
+.smc-overlay-collapse {
+  background: transparent;
+  border: none;
+  color: #8b949e;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 2px;
+  transition: color 0.15s;
+}
+
+.smc-overlay-collapse:hover {
+  color: #00ff88;
+}
+
+/* ── Body ───────────────────────────────────────────────────────────────────── */
+
+.smc-overlay-body {
+  padding: 8px 10px 10px;
+}
+
+.smc-overlay-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.smc-overlay-row:last-of-type {
+  border-bottom: none;
+}
+
+.smc-label {
+  color: #6e7681;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.smc-value {
+  color: #e6edf3;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 120px;
+}
+
+.smc-source {
+  color: #58a6ff;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Status badge ───────────────────────────────────────────────────────────── */
+
+.smc-overlay-status {
+  margin-top: 8px;
+  padding: 4px 8px;
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.25);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #ff4444;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+#smc-overlay[data-detected="true"] .smc-overlay-status {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: rgba(0, 255, 136, 0.25);
+  color: #00ff88;
+}
+
+/* ── Scrollbar (for future content) ────────────────────────────────────────── */
+
+#smc-overlay ::-webkit-scrollbar {
+  width: 4px;
+}
+
+#smc-overlay ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#smc-overlay ::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 2px;
+}
