@@ -95,3 +95,24 @@ npm run zip
 4. Open [TradingView](https://in.tradingview.com/chart/ or https://www.tradingview.com/chart/).
 5. Connect **Paper Trading** in the bottom dock Trading Panel.
 6. Click the extension icon or side panel to monitor live SMC analysis and enable **AUTO TRADE**.
+
+## Backend Setup & Local State
+
+The FastAPI backend lives in `backend/`:
+
+```
+cd backend
+pip install -r requirements.txt
+python -m pytest -q        # backend test suite
+uvicorn main:app --reload  # local API server
+```
+
+Broker credentials are supplied to the backend at connect time through its API
+(the Dhan / Zerodha / IBKR adapters fall back to sandbox mode when no
+credentials are provided); they are never stored in source code.
+
+Runtime state is kept in a local SQLite database (`backend/trading.db`,
+created automatically on first run). It contains order/position records and
+audit logs, is **local-only state**, and is intentionally not tracked in git
+(`*.db` is gitignored). Earlier versions of this repository briefly shipped a
+sample database; it has been removed from tracking.
